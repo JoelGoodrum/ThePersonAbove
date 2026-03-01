@@ -30,10 +30,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setBackgroundColor(this.level.world.backgroundColor)
+    const cam = this.cameras.main
+    if (cam) cam.setBackgroundColor(this.level.world.backgroundColor)
 
     loadMissingAndThen(this, this.level.assets, () => {
-      this.cursors = this.input.keyboard.createCursorKeys()
+      this.cursors = this.input.keyboard!.createCursorKeys()
 
       const { player } = bootstrapLevel({
         scene: this,

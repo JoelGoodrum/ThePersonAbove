@@ -1,5 +1,4 @@
 import type { LevelData } from './types'
-import { SCALE } from '../config/constants'
 
 export const officeInterior: LevelData = {
   world: {
