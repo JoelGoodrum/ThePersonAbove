@@ -3,7 +3,7 @@ import GameScene from './scenes/GameScene'
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  width: 700,
+  width: 1000,
   height: 700,
   scene: [GameScene],
   physics: {

@@ -1,12 +1,14 @@
+﻿import type { LevelKey } from './index' // or '../levels' depending on your exports
+
 export type LevelAsset = {
   key: string
   path: string
 }
 
 export type ColliderBox = {
-  offsetX: number,
-  offsetY: number,
-  width: number,
+  offsetX: number
+  offsetY: number
+  width: number
   height: number
 }
 
@@ -20,6 +22,23 @@ export type LevelImage = {
   collider?: ColliderBox
 }
 
+export type InteractableBase = {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
+export type Interactable =
+  | (InteractableBase & {
+      type: 'door'
+      targetLevel: LevelKey
+    })
+  | (InteractableBase & {
+      type: 'npc'
+      dialog: string
+    })
+
 export type LevelData = {
   world: {
     width: number
@@ -31,4 +50,5 @@ export type LevelData = {
   spawn: {
     player: { x: number; y: number }
   }
+  interactables?: readonly Interactable[] // ✅ lowercase
 }
