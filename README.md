@@ -303,3 +303,10 @@ This project is intentionally structured to scale cleanly.
 👉 Keep GameScene thin
 👉 Keep logic inside entities
 👉 Keep data inside levels
+---
+
+## 🧩 Story Implementation Planning
+
+For the detailed directory/file plan for the Lyla rescue storyline, see:
+
+- `docs/city-mystery-structure.md`
