@@ -19,7 +19,7 @@ export function bootstrapLevel(opts: {
 }) {
   const { scene, level, cursors, isTransitioning, playerState, hud, spawn } = opts
 
-  const { colliders, doors, items } = renderLevel(scene, level)
+  const { colliders, doors, items } = renderLevel(scene, level, playerState)
 
   const start = spawn ?? level.spawn.player
 
