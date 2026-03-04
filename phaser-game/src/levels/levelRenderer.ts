@@ -1,8 +1,9 @@
 import type Phaser from 'phaser'
 import type { LevelData } from './types'
 import { DEPTH, SCALE } from '../config/constants'
+import type { PlayerState } from '../entities/PlayerState'
 
-export function renderLevel(scene: Phaser.Scene, level: LevelData) {
+export function renderLevel(scene: Phaser.Scene, level: LevelData, playerState: PlayerState) {
   const colliders = scene.physics.add.staticGroup()
   const doors = scene.physics.add.staticGroup()
   const items = scene.physics.add.staticGroup()
@@ -50,6 +51,10 @@ export function renderLevel(scene: Phaser.Scene, level: LevelData) {
         s.setDepth(DEPTH.DOOR)
         doors.add(s)
       } else if (obj.type === 'item') {
+        if (playerState.hasItem(obj.name)) {
+          continue
+        }
+
         // ✅ Make the item a physics object so we can overlap it
         const it = scene.physics.add.staticImage(obj.x, obj.y, obj.name)
         it.setOrigin(0.5, 1) // pick a consistent origin; bottom-center feels good

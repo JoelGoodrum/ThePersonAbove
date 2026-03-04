@@ -15,6 +15,9 @@ const ROOM_115_DIALOG_STORAGE_KEY = 'dialogSeen:room115'
 const STARTUP_DIALOG_LINES = ['Help! I am stuck in here']
 const ROOM_115_DIALOG_LINES = ['I know Lyla, we play online games together']
 
+let runPlayerState: PlayerState | undefined
+const runSeenDialogs = new Set<string>()
+
 export default class GameScene extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
   private player!: Player
@@ -52,9 +55,11 @@ export default class GameScene extends Phaser.Scene {
     this.dialogText = undefined
     this.enterKey = undefined
 
-    // Keeping your behavior as-is:
-    // (If you want inventory to persist across level transitions later, we’ll move this out.)
-    this.playerState = new PlayerState()
+    if (!runPlayerState) {
+      runPlayerState = new PlayerState()
+    }
+
+    this.playerState = runPlayerState
   }
 
   preload() {
@@ -111,7 +116,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   private startPendingDialogForCurrentLevel() {
-    if (this.currentLevelKey === 'officeInterior' && !this.isDialogSeen(STARTUP_DIALOG_STORAGE_KEY)) {
+    if (
+      this.currentLevelKey === 'officeInterior' &&
+      !this.isDialogSeen(STARTUP_DIALOG_STORAGE_KEY)
+    ) {
       this.startDialog(STARTUP_DIALOG_LINES, STARTUP_DIALOG_STORAGE_KEY)
       return
     }
@@ -166,10 +174,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   private isDialogSeen(storageKey: string) {
-    return window.localStorage.getItem(storageKey) === 'true'
+    return runSeenDialogs.has(storageKey)
   }
 
   private setDialogSeen(storageKey: string) {
-    window.localStorage.setItem(storageKey, 'true')
+    runSeenDialogs.add(storageKey)
   }
 }
