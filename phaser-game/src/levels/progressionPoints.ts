@@ -18,7 +18,11 @@ export function progressionPoints(opts: {
       return false
     }
 
-    if (levelKey === 'loftHall' && interactable.targetLevel === 'room101' && !playerState.hasVisitedRoom115()) {
+    if (
+      levelKey === 'loftHall' &&
+      interactable.targetLevel === 'room101' &&
+      !playerState.hasVisitedRoom115()
+    ) {
       return false
     }
   }

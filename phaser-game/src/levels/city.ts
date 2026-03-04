@@ -129,7 +129,7 @@ export const city: LevelData = {
       id: 'security-guard',
       x: 1100,
       y: 760,
-      width: 80,
+      width: 140,
       height: 140,
       spriteKey: 'security-guard-npc',
       dialog: ['Only executives are allowed in. Some smokes would be nice though...'],

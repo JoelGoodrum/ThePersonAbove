@@ -34,7 +34,7 @@ export const officeInterior: LevelData = {
       id: 'office-lady',
       x: 230,
       y: 250,
-      width: 80,
+      width: 140,
       height: 140,
       spriteKey: 'office-lady-npc',
       dialog: ['that message is concerning, I would look into that if I were you'],

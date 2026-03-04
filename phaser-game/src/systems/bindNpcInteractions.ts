@@ -40,7 +40,12 @@ export function bindNpcInteractions(opts: {
 
     let lines = dialog
 
-    if (requiredItem && playerState.hasItem(requiredItem) && dialogIfHasItem && dialogIfHasItem.length > 0) {
+    if (
+      requiredItem &&
+      playerState.hasItem(requiredItem) &&
+      dialogIfHasItem &&
+      dialogIfHasItem.length > 0
+    ) {
       lines = dialogIfHasItem
 
       if (consumeRequiredItem) {

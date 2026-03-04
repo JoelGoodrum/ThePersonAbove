@@ -22,8 +22,17 @@ export function bootstrapLevel(opts: {
   dialogController: DialogController
   spawn?: Spawn
 }) {
-  const { scene, level, levelKey, cursors, isTransitioning, playerState, hud, dialogController, spawn } =
-    opts
+  const {
+    scene,
+    level,
+    levelKey,
+    cursors,
+    isTransitioning,
+    playerState,
+    hud,
+    dialogController,
+    spawn,
+  } = opts
 
   const { colliders, doors, items, npcs } = renderLevel(scene, level, levelKey, playerState)
 
