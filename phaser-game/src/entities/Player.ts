@@ -12,32 +12,13 @@ type PlayerConfig = {
 }
 
 const DEFAULT_SPEED = 180
-type WalkFrame = {
-  texture: string
-  durationMs: number
-}
+const WALK_FRAME_DURATION_MS = 120
 
-const WALK_FRAMES: Record<Direction, readonly WalkFrame[]> = {
-  up: [
-    { texture: 'player-up-left', durationMs: 120 },
-    { texture: 'player-up-right', durationMs: 120 },
-  ],
-  down: [
-    { texture: 'player-down-left', durationMs: 120 },
-    { texture: 'player-down-right', durationMs: 120 },
-  ],
-  left: [
-    { texture: 'player-left-right', durationMs: 100 },
-    { texture: 'player-left', durationMs: 140 },
-    { texture: 'player-left-left', durationMs: 100 },
-    { texture: 'player-left', durationMs: 140 },
-  ],
-  right: [
-    { texture: 'player-right-right', durationMs: 100 },
-    { texture: 'player-right', durationMs: 140 },
-    { texture: 'player-right-left', durationMs: 100 },
-    { texture: 'player-right', durationMs: 140 },
-  ],
+const WALK_FRAMES: Record<Direction, readonly string[]> = {
+  up: ['player-up-left', 'player-up-right'],
+  down: ['player-down-left', 'player-down-right'],
+  left: ['player-left-right', 'player-left', 'player-left-left', 'player-left'],
+  right: ['player-right-right', 'player-right', 'player-right-left', 'player-right'],
 } as const
 
 // Centralized collider config
@@ -56,7 +37,6 @@ export class Player {
   private isMoving = false
   private walkFrameElapsedMs = 0
   private walkFrameIndex = 0
-  private walkDirection?: Direction
   private currentTextureKey = ''
   private speed: number
 
@@ -162,29 +142,20 @@ export class Player {
     if (!this.isMoving) {
       this.walkFrameElapsedMs = 0
       this.walkFrameIndex = 0
-      this.walkDirection = undefined
       this.setTextureIfChanged(`player-${this.lastDirection}`)
       return
     }
 
-    if (this.walkDirection !== this.lastDirection) {
-      this.walkDirection = this.lastDirection
-      this.walkFrameElapsedMs = 0
-      this.walkFrameIndex = 0
-    }
-
-    const walkFrames = WALK_FRAMES[this.lastDirection]
-    const activeFrame = walkFrames[this.walkFrameIndex]
-
     const deltaMs = this.sprite.scene.game.loop.delta
     this.walkFrameElapsedMs += deltaMs
 
-    if (this.walkFrameElapsedMs >= activeFrame.durationMs) {
-      this.walkFrameElapsedMs -= activeFrame.durationMs
-      this.walkFrameIndex = (this.walkFrameIndex + 1) % walkFrames.length
+    if (this.walkFrameElapsedMs >= WALK_FRAME_DURATION_MS) {
+      this.walkFrameElapsedMs -= WALK_FRAME_DURATION_MS
+      this.walkFrameIndex = (this.walkFrameIndex + 1) % WALK_FRAMES[this.lastDirection].length
     }
 
-    this.setTextureIfChanged(walkFrames[this.walkFrameIndex].texture)
+    const frameTexture = WALK_FRAMES[this.lastDirection][this.walkFrameIndex]
+    this.setTextureIfChanged(frameTexture)
   }
 
   private setTextureIfChanged(textureKey: string) {
