@@ -17,15 +17,5 @@ export const quantumRoom: LevelData = {
     repeat: false,
   },
 
-  interactables: [
-    {
-      type: 'door',
-      x: 400,
-      y: 800,
-      width: 90,
-      height: 60,
-      targetLevel: 'lab', // exit back outside
-      targetSpawn: { x: 400, y: 400, facing: 'down' },
-    },
-  ],
+  interactables: [],
 }

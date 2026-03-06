@@ -69,14 +69,13 @@ export function bindNpcInteractions(opts: {
         hud.render()
       }
 
-      const onDialogComplete =
-        removeAfterTrade
-          ? () => {
-              playerState.markSecurityGuardMoved()
-              npc.destroy()
-              ensureTowerDoorExists(scene, doors)
-            }
-          : undefined
+      const onDialogComplete = removeAfterTrade
+        ? () => {
+            playerState.markSecurityGuardMoved()
+            npc.destroy()
+            ensureTowerDoorExists(scene, doors)
+          }
+        : undefined
 
       dialogController.startDialogLines(`dialogSeen:npc:${npcId}`, lines, true, onDialogComplete)
       lastInteractionAt = scene.time.now

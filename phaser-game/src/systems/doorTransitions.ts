@@ -57,7 +57,6 @@ export function doorTransitions(opts: {
 
       if (!targetLevel) return
 
-
       if (
         levelKey === 'towerLobby' &&
         targetLevel === 'towerHall' &&

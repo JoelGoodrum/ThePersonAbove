@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const towerLobby: LevelData = {
   world: {
     width: 1000,
-    height: 1000,
+    height: 800,
     backgroundColor: 0x222222,
   },
 
@@ -15,7 +15,7 @@ export const towerLobby: LevelData = {
     {
       type: 'door',
       x: 400,
-      y: 720,
+      y: 610,
       width: 90,
       height: 60,
       targetLevel: 'city', // exit back outside

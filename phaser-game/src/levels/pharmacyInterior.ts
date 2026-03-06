@@ -22,7 +22,7 @@ export const pharmacyInterior: LevelData = {
       width: 90,
       height: 60,
       targetLevel: 'city', // exit back outside
-      targetSpawn: { x: 1800, y: 1200, facing: 'down' },
+      targetSpawn: { x: 1730, y: 1250, facing: 'down' },
     },
     {
       type: 'item',
