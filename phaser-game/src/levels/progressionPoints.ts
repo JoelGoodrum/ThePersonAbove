@@ -26,7 +26,6 @@ export function progressionPoints(opts: {
       return false
     }
 
-
     if (
       levelKey === 'towerHall' &&
       interactable.targetLevel === 'lab' &&

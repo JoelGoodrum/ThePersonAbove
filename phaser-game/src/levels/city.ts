@@ -122,7 +122,7 @@ export const city: LevelData = {
       width: 72,
       height: 50,
       targetLevel: 'towerLobby',
-      targetSpawn: { x: 400, y: 600, facing: 'up' },
+      targetSpawn: { x: 400, y: 500, facing: 'up' },
     },
     {
       type: 'npc',

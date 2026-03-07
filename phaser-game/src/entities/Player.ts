@@ -190,7 +190,6 @@ export class Player {
     this.setTextureIfChanged(frameTexture)
   }
 
-
   private textureKeyForDirection(direction: Direction): string {
     return `${this.outfit}-${direction}`
   }
