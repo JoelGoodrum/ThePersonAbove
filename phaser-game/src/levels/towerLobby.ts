@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const towerLobby: LevelData = {
   world: {
     width: 1000,
-    height: 800,
+    height: 610,
     backgroundColor: 0x222222,
   },
 
@@ -16,7 +16,7 @@ export const towerLobby: LevelData = {
       type: 'door',
       x: 400,
       y: 650,
-      width: 64,
+      width: 200,
       height: 60,
       targetLevel: 'city', // exit back outside
       targetSpawn: { x: 1100, y: 800, facing: 'down' },
@@ -24,11 +24,11 @@ export const towerLobby: LevelData = {
     {
       type: 'door',
       x: 400,
-      y: 350,
-      width: 64,
+      y: 320,
+      width: 100,
       height: 60,
       targetLevel: 'towerHall', // exit back outside
-      targetSpawn: { x: 400, y: 450, facing: 'down' },
+      targetSpawn: { x: 500, y: 450, facing: 'down' },
     },
   ],
 }

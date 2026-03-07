@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const quantumRoom: LevelData = {
   world: {
     width: 800,
-    height: 800,
+    height: 700,
     backgroundColor: 0x222222,
   },
 

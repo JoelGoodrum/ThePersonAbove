@@ -22,8 +22,8 @@ export const officeInterior: LevelData = {
     id: 'dialogSeen:startup',
     lines: [
       'You have recieved a text message.',
-      'Help! I am locked in here!',
-      'I am stuck at the top of the \nexecutive tower!',
+      'Help! They locked me up in here!',
+      'I am at the top of the \nexecutive tower!',
     ],
     repeat: false,
   },
@@ -43,7 +43,7 @@ export const officeInterior: LevelData = {
       type: 'door',
       x: 400,
       y: 800,
-      width: 64,
+      width: 100,
       height: 60,
       targetLevel: 'city', // exit back outside
       targetSpawn: { x: 400, y: 750, facing: 'down' },

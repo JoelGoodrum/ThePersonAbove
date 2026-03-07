@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const room101: LevelData = {
   world: {
     width: 800,
-    height: 800,
+    height: 650,
     backgroundColor: 0x222222,
   },
 
@@ -25,7 +25,7 @@ export const room101: LevelData = {
       type: 'door',
       x: 400,
       y: 650,
-      width: 64,
+      width: 200,
       height: 60,
       targetLevel: 'loftHall', // exit back outside
       targetSpawn: { x: 280, y: 500, facing: 'down' },

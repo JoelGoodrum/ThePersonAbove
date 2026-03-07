@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const barInterior: LevelData = {
   world: {
     width: 800,
-    height: 800,
+    height: 610,
     backgroundColor: 0x222222,
   },
 
@@ -30,7 +30,7 @@ export const barInterior: LevelData = {
       type: 'door',
       x: 400,
       y: 650,
-      width: 64,
+      width: 200,
       height: 60,
       targetLevel: 'city', // exit back outside
       targetSpawn: { x: 330, y: 1250, facing: 'down' },

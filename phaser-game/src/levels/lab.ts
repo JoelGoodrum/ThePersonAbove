@@ -14,21 +14,21 @@ export const lab: LevelData = {
   interactables: [
     {
       type: 'door',
-      x: 400,
+      x: 380,
       y: 720,
-      width: 64,
+      width: 100,
       height: 60,
       targetLevel: 'towerHall', // exit back outside
       targetSpawn: { x: 100, y: 500, facing: 'down' },
     },
     {
       type: 'door',
-      x: 400,
-      y: 300,
-      width: 64,
+      x: 380,
+      y: 350,
+      width: 100,
       height: 60,
       targetLevel: 'quantumRoom', // exit back outside
-      targetSpawn: { x: 400, y: 700, facing: 'up' },
+      targetSpawn: { x: 400, y: 590, facing: 'up' },
     },
   ],
 }

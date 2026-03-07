@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const closet: LevelData = {
   world: {
     width: 800,
-    height: 800,
+    height: 660,
     backgroundColor: 0x222222,
   },
 
@@ -17,9 +17,9 @@ export const closet: LevelData = {
   interactables: [
     {
       type: 'door',
-      x: 400,
-      y: 720,
-      width: 64,
+      x: 380,
+      y: 660,
+      width: 150,
       height: 60,
       targetLevel: 'towerHall', // exit back outside
       targetSpawn: { x: 700, y: 500, facing: 'down' },

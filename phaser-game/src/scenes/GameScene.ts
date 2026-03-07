@@ -32,7 +32,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   init(data: { levelKey?: LevelKey; spawn?: Spawn } = {}) {
-    this.levelKey = data.levelKey ?? 'quantumRoom'
+    this.levelKey = data.levelKey ?? 'officeInterior'
     this.level = LEVELS[this.levelKey]
     this.spawn = data.spawn
 
@@ -138,43 +138,48 @@ export default class GameScene extends Phaser.Scene {
       holdingLever.setTexture('holding-lever-left')
 
       this.time.delayedCall(500, () => {
-        this.dialogController?.startDialogLines('dialog:quantumRoom:endingThanks', ['Thank you...'], true, () => {
-          const blackScreen = this.add
-          .rectangle(
-            this.scale.width / 2,
-            this.scale.height / 2,
-            this.scale.width,
-            this.scale.height,
-            0x000000
-          )
-          .setScrollFactor(0)
-          .setAlpha(0)
-          .setDepth(1000)
+        this.dialogController?.startDialogLines(
+          'dialog:quantumRoom:endingThanks',
+          ['Thank you...'],
+          true,
+          () => {
+            const blackScreen = this.add
+              .rectangle(
+                this.scale.width / 2,
+                this.scale.height / 2,
+                this.scale.width,
+                this.scale.height,
+                0x000000
+              )
+              .setScrollFactor(0)
+              .setAlpha(0)
+              .setDepth(1000)
 
-          this.tweens.add({
-            targets: blackScreen,
-            alpha: 1,
-            duration: 1000,
-            onComplete: () => {
-              this.add
-                .text(
-                  this.scale.width / 2,
-                  this.scale.height / 2,
-                  'Thank you for playing the game!\n(press enter to restart)',
-                  {
-                    color: '#ffffff',
-                    fontSize: '32px',
-                    align: 'center',
-                  }
-                )
-                .setOrigin(0.5)
-                .setScrollFactor(0)
-                .setDepth(blackScreen.depth + 1)
+            this.tweens.add({
+              targets: blackScreen,
+              alpha: 1,
+              duration: 1000,
+              onComplete: () => {
+                this.add
+                  .text(
+                    this.scale.width / 2,
+                    this.scale.height / 2,
+                    'Thank you for playing the game!\n(press enter to restart)',
+                    {
+                      color: '#ffffff',
+                      fontSize: '32px',
+                      align: 'center',
+                    }
+                  )
+                  .setOrigin(0.5)
+                  .setScrollFactor(0)
+                  .setDepth(blackScreen.depth + 1)
 
-              this.waitingForRestart = true
-            },
-          })
-        })
+                this.waitingForRestart = true
+              },
+            })
+          }
+        )
       })
     })
   }
