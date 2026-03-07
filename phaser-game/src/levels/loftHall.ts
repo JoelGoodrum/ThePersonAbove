@@ -18,7 +18,7 @@ export const loftHall: LevelData = {
     {
       type: 'collider',
       x: 650,
-      y: 398,
+      y: 410,
       width: 860,
       height: 26,
     },

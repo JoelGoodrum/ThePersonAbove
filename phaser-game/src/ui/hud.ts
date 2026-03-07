@@ -61,7 +61,10 @@ export function createHud(scene: Phaser.Scene, playerState: PlayerState): Hud {
       iconContainer.add([slot, icon])
     }
 
-    const width = Math.max(220, HUD_PADDING * 2 + items.length * SLOT_SIZE + Math.max(0, items.length - 1) * SLOT_GAP)
+    const width = Math.max(
+      220,
+      HUD_PADDING * 2 + items.length * SLOT_SIZE + Math.max(0, items.length - 1) * SLOT_GAP
+    )
     background.setSize(width, 72)
   }
 

@@ -42,5 +42,12 @@ export const towerHall: LevelData = {
       targetLevel: 'closet', // exit back outside
       targetSpawn: { x: 400, y: 600, facing: 'up' },
     },
+    {
+      type: 'collider',
+      x: 600,
+      y: 380,
+      width: 1200,
+      height: 26,
+    },
   ],
 }
