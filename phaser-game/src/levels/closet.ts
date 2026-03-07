@@ -9,7 +9,7 @@ export const closet: LevelData = {
 
   assets: [
     { key: 'closet', path: '/assets/sprites/interiors/closet.png' },
-    { key: 'coat', path: '/assets/sprites/items/coat.png' },
+    { key: 'clothes', path: '/assets/sprites/items/coat.png' },
   ],
 
   images: [{ key: 'closet', x: 600, y: 400, scale: 0.4, originX: 0.85, originY: 0.5 }],
@@ -30,7 +30,7 @@ export const closet: LevelData = {
       y: 400,
       width: 1,
       height: 1,
-      name: 'coat',
+      name: 'clothes',
     },
   ],
 }

@@ -26,6 +26,15 @@ export function progressionPoints(opts: {
       return false
     }
 
+
+    if (
+      levelKey === 'towerHall' &&
+      interactable.targetLevel === 'lab' &&
+      !playerState.hasItem('clothes')
+    ) {
+      return false
+    }
+
     if (
       levelKey === 'loftHall' &&
       interactable.targetLevel === 'room101' &&

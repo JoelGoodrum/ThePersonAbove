@@ -44,6 +44,7 @@ export function bootstrapLevel(opts: {
     startY: start.y,
     scale: SCALE.PLAYER,
     facing: spawn?.facing,
+    wearingLabcoat: playerState.hasItem('clothes'),
   })
 
   scene.physics.add.collider(player.gameObject, colliders)

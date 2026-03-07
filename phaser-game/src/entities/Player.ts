@@ -9,6 +9,7 @@ type PlayerConfig = {
   scale: number
   speed?: number
   facing?: Direction
+  wearingLabcoat?: boolean
 }
 
 const DEFAULT_SPEED = 180
@@ -19,11 +20,19 @@ const PLAYER_ORIGIN_Y = 1
 // Increase/decrease this value to shift only side-facing frames horizontally.
 const SIDE_FACING_ORIGIN_X_OFFSET = 0
 
-const WALK_FRAMES: Record<Direction, readonly string[]> = {
-  up: ['player-up-left', 'player-up-right'],
-  down: ['player-down-left', 'player-down-right'],
-  left: ['player-left-right', 'player-left'],
-  right: ['player-right-left', 'player-right'],
+const WALK_FRAMES_BY_OUTFIT: Record<'player' | 'labcoat', Record<Direction, readonly string[]>> = {
+  player: {
+    up: ['player-up-left', 'player-up-right'],
+    down: ['player-down-left', 'player-down-right'],
+    left: ['player-left-right', 'player-left'],
+    right: ['player-right-left', 'player-right'],
+  },
+  labcoat: {
+    up: ['labcoat-up-left', 'labcoat-up-right'],
+    down: ['labcoat-down-left', 'labcoat-down-right'],
+    left: ['labcoat-left-left', 'labcoat-left'],
+    right: ['labcoat-right-right', 'labcoat-right'],
+  },
 } as const
 
 // Centralized collider config
@@ -44,6 +53,7 @@ export class Player {
   private walkFrameIndex = 0
   private currentTextureKey = ''
   private speed: number
+  private outfit: 'player' | 'labcoat'
 
   constructor(
     scene: Phaser.Scene,
@@ -52,11 +62,16 @@ export class Player {
   ) {
     this.cursors = cursors
     this.speed = config.speed ?? DEFAULT_SPEED
+    this.outfit = config.wearingLabcoat ? 'labcoat' : 'player'
 
     const initialFacing: Direction = config.facing ?? 'down'
     this.lastDirection = initialFacing
 
-    this.sprite = scene.physics.add.sprite(config.startX, config.startY, `player-${initialFacing}`)
+    this.sprite = scene.physics.add.sprite(
+      config.startX,
+      config.startY,
+      this.textureKeyForDirection(initialFacing)
+    )
 
     this.sprite.setOrigin(BASE_PLAYER_ORIGIN_X, PLAYER_ORIGIN_Y)
     this.sprite.setScale(config.scale)
@@ -90,6 +105,17 @@ export class Player {
 
   get gameObject() {
     return this.sprite
+  }
+
+  setWearingLabcoat(wearingLabcoat: boolean) {
+    const nextOutfit = wearingLabcoat ? 'labcoat' : 'player'
+    if (this.outfit === nextOutfit) return
+
+    this.outfit = nextOutfit
+    this.walkFrameElapsedMs = 0
+    this.walkFrameIndex = 0
+    this.currentTextureKey = ''
+    this.updateTexture()
   }
 
   private updateMovement() {
@@ -147,7 +173,7 @@ export class Player {
     if (!this.isMoving) {
       this.walkFrameElapsedMs = 0
       this.walkFrameIndex = 0
-      this.setTextureIfChanged(`player-${this.lastDirection}`)
+      this.setTextureIfChanged(this.textureKeyForDirection(this.lastDirection))
       return
     }
 
@@ -156,11 +182,17 @@ export class Player {
 
     if (this.walkFrameElapsedMs >= WALK_ANIMATION_FRAME_DURATION_MS) {
       this.walkFrameElapsedMs -= WALK_ANIMATION_FRAME_DURATION_MS
-      this.walkFrameIndex = (this.walkFrameIndex + 1) % WALK_FRAMES[this.lastDirection].length
+      this.walkFrameIndex =
+        (this.walkFrameIndex + 1) % WALK_FRAMES_BY_OUTFIT[this.outfit][this.lastDirection].length
     }
 
-    const frameTexture = WALK_FRAMES[this.lastDirection][this.walkFrameIndex]
+    const frameTexture = WALK_FRAMES_BY_OUTFIT[this.outfit][this.lastDirection][this.walkFrameIndex]
     this.setTextureIfChanged(frameTexture)
+  }
+
+
+  private textureKeyForDirection(direction: Direction): string {
+    return `${this.outfit}-${direction}`
   }
 
   private setTextureIfChanged(textureKey: string) {
