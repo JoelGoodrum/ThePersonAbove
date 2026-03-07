@@ -19,7 +19,7 @@ export const lab: LevelData = {
       width: 100,
       height: 60,
       targetLevel: 'towerHall', // exit back outside
-      targetSpawn: { x: 100, y: 500, facing: 'down' },
+      targetSpawn: { x: 240, y: 450, facing: 'down' },
     },
     {
       type: 'door',

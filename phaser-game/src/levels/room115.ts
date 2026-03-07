@@ -3,7 +3,7 @@ import type { LevelData } from './types'
 export const room115: LevelData = {
   world: {
     width: 800,
-    height: 800,
+    height: 650,
     backgroundColor: 0x222222,
   },
 
