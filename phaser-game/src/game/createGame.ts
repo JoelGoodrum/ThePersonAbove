@@ -19,7 +19,7 @@ export const createGame = (parent: string | HTMLElement, _options: CreateGameOpt
     physics: {
       default: 'arcade',
       arcade: {
-        debug: true,
+        debug: false,
       },
     },
   }
