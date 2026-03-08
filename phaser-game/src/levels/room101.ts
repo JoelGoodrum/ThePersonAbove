@@ -43,8 +43,8 @@ export const room101: LevelData = {
     },
     {
       type: 'item',
-      x: 650,
-      y: 500,
+      x: 680,
+      y: 515,
       width: 1,
       height: 1,
       name: 'keyCard',
