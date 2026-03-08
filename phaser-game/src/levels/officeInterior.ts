@@ -30,9 +30,16 @@ export const officeInterior: LevelData = {
 
   interactables: [
     {
+      type: 'collider',
+      x: 400,
+      y: 100,
+      width: 800,
+      height: 200,
+    },
+    {
       type: 'npc',
       id: 'office-lady',
-      x: 230,
+      x: 130,
       y: 250,
       width: 140,
       height: 140,

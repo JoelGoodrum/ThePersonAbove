@@ -8,8 +8,8 @@ type CreateGameOptions = {
 export const createGame = (parent: string | HTMLElement, _options: CreateGameOptions) => {
   const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
-    width: 720,
-    height: 720,
+    width: 800,
+    height: 800,
     parent,
     scale: {
       mode: Phaser.Scale.FIT,
