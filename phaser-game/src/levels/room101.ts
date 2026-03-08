@@ -4,7 +4,7 @@ export const room101: LevelData = {
   world: {
     width: 800,
     height: 650,
-    backgroundColor: 0x222222,
+    backgroundColor: 0x000,
   },
 
   assets: [
@@ -12,7 +12,11 @@ export const room101: LevelData = {
     { key: 'keyCard', path: '/assets/sprites/items/keyCard.png' },
   ],
 
-  images: [{ key: 'room101', x: 600, y: 400, scale: 0.5, originX: 0.75, originY: 0.5 }],
+  spawn: {
+    player: { x: 500, y: 550 },
+  },
+
+  images: [{ key: 'room101', x: 600, y: 400, scale: 0.6, originX: 0.72, originY: 0.5 }],
 
   levelStartingDialog: {
     id: 'dialogSeen:room101',
@@ -22,13 +26,20 @@ export const room101: LevelData = {
 
   interactables: [
     {
+      type: 'collider',
+      x: 400,
+      y: 280,
+      width: 800,
+      height: 100,
+    },
+    {
       type: 'door',
       x: 400,
       y: 650,
       width: 200,
       height: 60,
       targetLevel: 'loftHall', // exit back outside
-      targetSpawn: { x: 280, y: 500, facing: 'down' },
+      targetSpawn: { x: 190, y: 480, facing: 'down' },
     },
     {
       type: 'item',

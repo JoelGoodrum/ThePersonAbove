@@ -4,11 +4,11 @@ export const barInterior: LevelData = {
   world: {
     width: 800,
     height: 610,
-    backgroundColor: 0x222222,
+    backgroundColor: 0x000,
   },
 
   spawn: {
-    player: { x: 700, y: 250 },
+    player: { x: 500, y: 550 },
   },
 
   assets: [{ key: 'bar-interior', path: '/assets/sprites/interiors/bar-interior.png' }],
@@ -27,9 +27,23 @@ export const barInterior: LevelData = {
 
   interactables: [
     {
+      type: 'collider',
+      x: 400,
+      y: 210,
+      width: 800,
+      height: 100,
+    },
+    {
+      type: 'collider',
+      x: 420,
+      y: 300,
+      width: 450,
+      height: 100,
+    },
+    {
       type: 'door',
       x: 400,
-      y: 650,
+      y: 620,
       width: 200,
       height: 60,
       targetLevel: 'city', // exit back outside

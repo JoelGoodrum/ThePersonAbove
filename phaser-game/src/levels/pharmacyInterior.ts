@@ -4,7 +4,7 @@ export const pharmacyInterior: LevelData = {
   world: {
     width: 800,
     height: 700,
-    backgroundColor: 0x222222,
+    backgroundColor: 0x000,
   },
 
   assets: [
@@ -12,9 +12,35 @@ export const pharmacyInterior: LevelData = {
     { key: 'cigarette', path: '/assets/sprites/items/cigarette.png' },
   ],
 
-  images: [{ key: 'pharmacy-interior', x: 600, y: 400, scale: 0.7, originX: 0.7, originY: 0.5 }],
+  // for dev debugging
+  spawn: {
+    player: { x: 500, y: 550 },
+  },
+
+  images: [{ key: 'pharmacy-interior', x: 600, y: 400, scale: 0.78, originX: 0.67, originY: 0.5 }],
 
   interactables: [
+    {
+      type: 'collider',
+      x: 400,
+      y: 270,
+      width: 800,
+      height: 100,
+    },
+    {
+      type: 'collider',
+      x: 100,
+      y: 800,
+      width: 100,
+      height: 800,
+    },
+    {
+      type: 'collider',
+      x: 700,
+      y: 800,
+      width: 100,
+      height: 800,
+    },
     {
       type: 'door',
       x: 400,

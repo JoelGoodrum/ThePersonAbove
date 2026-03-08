@@ -4,7 +4,7 @@ export const towerHall: LevelData = {
   world: {
     width: 1080,
     height: 550,
-    backgroundColor: 0x222222,
+    backgroundColor: 0x000,
   },
   spawn: {
     player: { x: 200, y: 500 },
@@ -12,7 +12,7 @@ export const towerHall: LevelData = {
 
   assets: [{ key: 'tower-hall', path: '/assets/sprites/interiors/tower-hall.png' }],
 
-  images: [{ key: 'tower-hall', x: 600, y: 400, scale: 0.7, originX: 0.56, originY: 0.5 }],
+  images: [{ key: 'tower-hall', x: 600, y: 400, scale: 0.72, originX: 0.558, originY: 0.5 }],
 
   interactables: [
     {
@@ -35,9 +35,9 @@ export const towerHall: LevelData = {
     },
     {
       type: 'door',
-      x: 820,
+      x: 840,
       y: 400,
-      width: 64,
+      width: 100,
       height: 60,
       targetLevel: 'closet', // exit back outside
       targetSpawn: { x: 400, y: 600, facing: 'up' },
@@ -45,7 +45,7 @@ export const towerHall: LevelData = {
     {
       type: 'collider',
       x: 600,
-      y: 380,
+      y: 390,
       width: 1200,
       height: 26,
     },

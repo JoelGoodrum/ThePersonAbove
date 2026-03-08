@@ -2,16 +2,27 @@ import type { LevelData } from './types'
 
 export const towerLobby: LevelData = {
   world: {
-    width: 1000,
+    width: 800,
     height: 610,
-    backgroundColor: 0x222222,
+    backgroundColor: 0x000,
   },
 
   assets: [{ key: 'tower-lobby', path: '/assets/sprites/interiors/tower-lobby.png' }],
 
-  images: [{ key: 'tower-lobby', x: 600, y: 400, scale: 0.5, originX: 0.75, originY: 0.5 }],
+  images: [{ key: 'tower-lobby', x: 600, y: 400, scale: 0.6, originX: 0.72, originY: 0.5 }],
+
+  spawn: {
+    player: { x: 500, y: 550 },
+  },
 
   interactables: [
+    {
+      type: 'collider',
+      x: 400,
+      y: 310,
+      width: 800,
+      height: 100,
+    },
     {
       type: 'door',
       x: 400,

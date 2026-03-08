@@ -3,13 +3,17 @@ import type { LevelData } from './types'
 export const room115: LevelData = {
   world: {
     width: 800,
-    height: 650,
-    backgroundColor: 0x222222,
+    height: 680,
+    backgroundColor: 0x000,
   },
 
   assets: [{ key: 'room115', path: '/assets/sprites/interiors/room115.png' }],
 
-  images: [{ key: 'room115', x: 600, y: 400, scale: 0.5, originX: 0.75, originY: 0.5 }],
+  spawn: {
+    player: { x: 500, y: 550 },
+  },
+
+  images: [{ key: 'room115', x: 600, y: 400, scale: 0.68, originX: 0.69, originY: 0.5 }],
 
   levelStartingDialog: {
     id: 'dialogSeen:room115',
@@ -23,13 +27,20 @@ export const room115: LevelData = {
 
   interactables: [
     {
+      type: 'collider',
+      x: 400,
+      y: 270,
+      width: 800,
+      height: 100,
+    },
+    {
       type: 'door',
       x: 400,
-      y: 650,
+      y: 720,
       width: 100,
       height: 60,
       targetLevel: 'loftHall', // exit back outside
-      targetSpawn: { x: 1020, y: 500, facing: 'down' },
+      targetSpawn: { x: 930, y: 480, facing: 'down' },
     },
   ],
 }

@@ -16,7 +16,7 @@ export const officeInterior: LevelData = {
     { key: 'office-lady-npc', path: '/assets/sprites/NPCs/office-lady-npc.png' },
   ],
 
-  images: [{ key: 'office-interior', x: 400, y: 400, scale: 0.7, originX: 0.5, originY: 0.5 }],
+  images: [{ key: 'office-interior', x: 400, y: 400, scale: 0.82, originX: 0.5, originY: 0.5 }],
 
   levelStartingDialog: {
     id: 'dialogSeen:startup',
@@ -43,20 +43,20 @@ export const officeInterior: LevelData = {
       type: 'collider',
       x: 400,
       y: 500,
-      width: 400,
+      width: 480,
       height: 200,
     },
     {
       type: 'collider',
       x: 400,
-      y: 560,
-      width: 180,
-      height: 350,
+      y: 580,
+      width: 230,
+      height: 400,
     },
     {
       type: 'door',
       x: 400,
-      y: 800,
+      y: 840,
       width: 100,
       height: 60,
       targetLevel: 'city', // exit back outside
