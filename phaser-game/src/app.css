@@ -145,6 +145,7 @@ body {
 
   .content {
     padding-top: 0.5rem;
+    margin-top: -80px;
   }
 
   .game-section-mobile {
@@ -162,7 +163,7 @@ body {
 
   .mobile-controls {
     padding: 0 1rem;
-    margin-top: -0.5rem;
+    margin-top: -50px;
     margin-bottom: 0.5rem;
   }
 }

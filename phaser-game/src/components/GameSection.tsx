@@ -99,7 +99,12 @@ export const GameSection = () => {
       {mobile ? (
         <div className="mobile-controls" aria-label="Mobile controls">
           <div className="mobile-dpad" aria-label="Directional controls">
-            <button type="button" className="dpad-button dpad-up" aria-label="Move up" data-direction="up">
+            <button
+              type="button"
+              className="dpad-button dpad-up"
+              aria-label="Move up"
+              data-direction="up"
+            >
               ▲
             </button>
             <button
